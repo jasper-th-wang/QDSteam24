@@ -56,6 +56,21 @@ button {
   transition: border-color 0.25s;
 }
 
+.blueButton {
+  color: #ffffff;
+  background-color: #232998;
+}
+
+.orangeButton {
+  color: #000000;
+  background-color: #F4bb47;
+}
+
+.grayButton {
+  color: #ffffff;
+  background-color: #acacac;
+}
+
 button:hover {
   border-color: #646cff;
 }

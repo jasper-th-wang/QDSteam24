@@ -25,6 +25,7 @@ export default function Timer() {
     const [pomodoroTimeLeft, setPomodoroTimeLeft] = useState(workDuration);
     const [remainingTime, setRemainingTime] = useState(originalRemainingTime);
     const [isActive, setIsActive] = useState(false);
+    const [isBreak, setIsBreak] = useState(false);
 
     useEffect(() => {
         let interval = null;
@@ -43,6 +44,7 @@ export default function Timer() {
 
     const handleStart = () => {
         setIsActive(true);
+        setIsActive(!isActive);
     };
 
     return (
