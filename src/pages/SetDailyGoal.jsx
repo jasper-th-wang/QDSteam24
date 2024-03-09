@@ -3,7 +3,7 @@ import React from 'react';
 import classes from './SetDailyGoal.module.css';
 import TodayDate from '../components/TodayDate/TodayDate';
 
-function GetTodaysDate() {
+function Greeting() {
     // Get current Date
     const currentDate = new Date();
 
@@ -35,9 +35,9 @@ function SetDailyGoal() {
     return (
 
         <div className="">
-            <GetTodaysDate />
-            <br />
+            <Greeting />
             <p>Let's set a goal for today</p>
+            <br />
             <p>How long do you want to spend time to study today?</p>
             <br />
             <Button variant="contained">Set Today's Goal</Button>
