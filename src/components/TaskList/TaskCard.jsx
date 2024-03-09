@@ -18,7 +18,7 @@ const deleteTaskStyle = {
 function TaskCard({ taskName, remainTime }) {
     return (
         <Container>
-            <Card sx={{ minWidth: 275 }}>
+            <Card sx={{ minWidth: 275, backgroundColor: '#E8FEFF' }}>
                 <CardContent>
                     <p>{taskName}</p>
                     <p>{remainTime} remaining</p>
