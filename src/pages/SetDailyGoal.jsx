@@ -3,15 +3,9 @@ import React from 'react';
 import classes from './SetDailyGoal.module.css';
 import TodayDate from '../components/TodayDate/TodayDate';
 
-<<<<<<< HEAD
-function GetTodaysDate() {
-  // Get current Date
-  const currentDate = new Date();
-=======
 function Greeting() {
     // Get current Date
     const currentDate = new Date();
->>>>>>> refs/remotes/origin/main
 
   // Get current yea, month, day
   const year = currentDate.getFullYear();
@@ -31,27 +25,6 @@ function Greeting() {
     greeting = <p>Good Evening!</p>;
   }
 
-<<<<<<< HEAD
-  return (
-    <div>
-      <TodayDate />
-      <p className="orangeColour">{greeting}</p>
-    </div>
-  );
-}
-
-function SetDailyGoal() {
-  return (
-    <div className="">
-      <GetTodaysDate />
-      <br />
-      <p>Let's set a goal for today</p>
-      <p>How long do you want to spend time to study today?</p>
-      <br />
-      <Button variant="contained">Set Today's Goal</Button>
-    </div>
-  );
-=======
     return (
         <div>
             <TodayDate />
@@ -72,7 +45,6 @@ function SetDailyGoal() {
             <Button variant="contained">Set Today's Goal</Button>
         </div>
     );
->>>>>>> refs/remotes/origin/main
 }
 
 export default SetDailyGoal;

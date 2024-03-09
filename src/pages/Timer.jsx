@@ -1,6 +1,6 @@
 import { useState } from "react";
 import classes from "./Timer.module.css";
-import Container from "../components/Container";
+import Container from "../components/Container/Container";
 
 // values for Pomodoro timer
 const workDuration = 25 * 60;
@@ -10,10 +10,6 @@ const breakDuration = 5 * 60;
 const description = "Chapter 1: Introduction to JavaScript";
 const category = "JavaScript";
 const originalRemainingTime = 90 * 60; // 90 minutes
-
-// values for counting down
-const [pomodoroTimeLeft, setPomodoroLeftTime] = useState(workDuration);
-const [remainingTime, setRemainingTime] = useState(originalRemainingTime);
 
 function formatTime(seconds) {
     const hours = Math.floor(seconds / 3600);
@@ -25,6 +21,10 @@ function formatTime(seconds) {
 }
 
 export default function Timer() {
+    // values for counting down
+    const [pomodoroTimeLeft, setPomodoroLeftTime] = useState(workDuration);
+    const [remainingTime, setRemainingTime] = useState(originalRemainingTime);
+    
     return (
         <Container>
             <h1 className={`${classes.description} blueTitleColour`}>
