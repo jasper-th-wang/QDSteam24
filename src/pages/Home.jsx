@@ -1,4 +1,4 @@
-import { Container } from '@mui/material';
+import Container from '../components/Container/Container';
 // import Button from '@mui/material/Button';
 import DailyProgress from '../components/DailyProgress/DailyProgress';
 function Home() {
