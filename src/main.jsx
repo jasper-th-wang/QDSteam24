@@ -28,7 +28,7 @@ const router = createBrowserRouter([
   {
     path: '/task-card',
     element: <TaskList />,
-  },
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
