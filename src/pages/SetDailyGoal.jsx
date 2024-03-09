@@ -4,45 +4,46 @@ import classes from './SetDailyGoal.module.css';
 import TodayDate from '../components/TodayDate/TodayDate';
 
 function GetTodaysDate() {
-    // Get current Date
-    const currentDate = new Date();
+  // Get current Date
+  const currentDate = new Date();
 
-    // Get current yea, month, day
-    const year = currentDate.getFullYear();
-    const month = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(currentDate);
-    const day = currentDate.getDate();
-    const currentTIme = currentDate.getHours();
+  // Get current yea, month, day
+  const year = currentDate.getFullYear();
+  const month = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(
+    currentDate
+  );
+  const day = currentDate.getDate();
+  const currentTIme = currentDate.getHours();
 
-    let greeting;
+  let greeting;
 
-    if (currentTIme > 0 && currentTIme < 12) {
-        greeting = <p>Good Morning!</p>
-    } else if (currentTIme >= 12 && currentTIme < 18) {
-        greeting = <p>Good Afternoon!</p>
-    } else {
-        greeting = <p>Good Evening!</p>
-    }
+  if (currentTIme > 0 && currentTIme < 12) {
+    greeting = <p>Good Morning!</p>;
+  } else if (currentTIme >= 12 && currentTIme < 18) {
+    greeting = <p>Good Afternoon!</p>;
+  } else {
+    greeting = <p>Good Evening!</p>;
+  }
 
-    return (
-        <div>
-            <TodayDate />
-            <p className='orangeColour'>{greeting}</p>
-        </div>
-    );
+  return (
+    <div>
+      <TodayDate />
+      <p className="orangeColour">{greeting}</p>
+    </div>
+  );
 }
 
 function SetDailyGoal() {
-    return (
-
-        <div className="">
-            <GetTodaysDate />
-            <br />
-            <p>Let's set a goal for today</p>
-            <p>How long do you want to spend time to study today?</p>
-            <br />
-            <Button variant="contained">Set Today's Goal</Button>
-        </div>
-    );
+  return (
+    <div className="">
+      <GetTodaysDate />
+      <br />
+      <p>Let's set a goal for today</p>
+      <p>How long do you want to spend time to study today?</p>
+      <br />
+      <Button variant="contained">Set Today's Goal</Button>
+    </div>
+  );
 }
 
 export default SetDailyGoal;
