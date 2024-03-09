@@ -18,16 +18,18 @@ const deleteTaskStyle = {
 function TaskCard({ taskName, remainTime }) {
     return (
         <Container>
-            <Card sx={{ minWidth: 275 }}></Card>
-            <p>{taskName}</p>
-            <p>{remainTime} remaining</p>
+            <Card sx={{ minWidth: 275 }}>
+                <CardContent>
+                    <p>{taskName}</p>
+                    <p>{remainTime} remaining</p>
 
-            <button className='blueButton'>Start This Task</button>
-            <br />
-            <button className='orangeButton'>Completed</button>
-            <p style={deleteTaskStyle}>Delete Task</p>
-            <card />
-        </Container>
+                    <button className='blueButton'>Start This Task</button>
+                    <br />
+                    <button className='orangeButton'>Completed</button>
+                    <p style={deleteTaskStyle}>Delete Task</p>
+                </CardContent>
+            </Card>
+        </Container >
     )
 }
 
