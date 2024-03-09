@@ -1,6 +1,7 @@
 import Button from '@mui/material/Button';
 import React from 'react';
 import classes from './SetDailyGoal.module.css';
+import TodayDate from '../components/TodayDate/TodayDate';
 
 function GetTodaysDate() {
     // Get current Date
@@ -24,7 +25,7 @@ function GetTodaysDate() {
 
     return (
         <div>
-            <h3 className="blueTitleColour">{`${month} ${day}, ${year}`}</h3>
+            <TodayDate />
             <p className='orangeColour'>{greeting}</p>
         </div>
     );
