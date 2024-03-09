@@ -3,15 +3,9 @@ import React from 'react';
 import classes from './SetDailyGoal.module.css';
 import TodayDate from '../components/TodayDate/TodayDate';
 
-<<<<<<< HEAD
-function GetTodaysDate() {
+function Greeting() {
   // Get current Date
   const currentDate = new Date();
-=======
-function Greeting() {
-    // Get current Date
-    const currentDate = new Date();
->>>>>>> refs/remotes/origin/main
 
   // Get current yea, month, day
   const year = currentDate.getFullYear();
@@ -31,11 +25,12 @@ function Greeting() {
     greeting = <p>Good Evening!</p>;
   }
 
-<<<<<<< HEAD
   return (
     <div>
       <TodayDate />
-      <p className="orangeColour">{greeting}</p>
+      <p className="orangeColour" style={{ fontWeight: 'bolder' }}>
+        {greeting}
+      </p>
     </div>
   );
 }
@@ -43,36 +38,14 @@ function Greeting() {
 function SetDailyGoal() {
   return (
     <div className="">
-      <GetTodaysDate />
-      <br />
+      <Greeting />
       <p>Let's set a goal for today</p>
+      <br />
       <p>How long do you want to spend time to study today?</p>
       <br />
       <Button variant="contained">Set Today's Goal</Button>
     </div>
   );
-=======
-    return (
-        <div>
-            <TodayDate />
-            <p className='orangeColour' style={{ fontWeight: 'bolder' }}>{greeting}</p>
-        </div>
-    );
-}
-
-function SetDailyGoal() {
-    return (
-
-        <div className="">
-            <Greeting />
-            <p>Let's set a goal for today</p>
-            <br />
-            <p>How long do you want to spend time to study today?</p>
-            <br />
-            <Button variant="contained">Set Today's Goal</Button>
-        </div>
-    );
->>>>>>> refs/remotes/origin/main
 }
 
 export default SetDailyGoal;
