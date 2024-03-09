@@ -1,37 +1,32 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
-import Home from './pages/Home';
-import SetDailyGoal from './pages/SetDailyGoal';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Home from './pages/Home.jsx';
+import Timer from './pages/Timer.jsx';
+import SetDailyGoal from './pages/SetDailyGoal.jsx';
+import TaskList from './components/TaskList/TaskList.jsx';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Home />,
+  },
+  {
+    path: '/timer',
+    element: <Timer />,
+  },
+  {
+    path: '/daily-goals',
+    element: <SetDailyGoal />,
+  },
+  {
+    path: '/task-card',
+    element: <TaskList />,
+  },
+]);
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
-      <div>
-        <Home someNumber={5} />
-        <SetDailyGoal />
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 4)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <RouterProvider router={router} />
     </>
   );
 }
