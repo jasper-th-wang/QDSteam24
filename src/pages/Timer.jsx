@@ -3,7 +3,7 @@ import classes from "./Timer.module.css";
 import Container from "../components/Container/Container";
 
 // values for Pomodoro timer
-const workDuration = 25 * 60;
+const workDuration = 10;
 const breakDuration = 5 * 60;
 
 // things we want to get from firebase
@@ -20,6 +20,15 @@ function formatTime(seconds) {
         .padStart(2, "0")}:${remainingSeconds.toString().padStart(2, "0")}`;
 }
 
+function formatPomodoroTime(seconds) {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes
+        .toString()
+        .padStart(2, "0")}:${remainingSeconds.toString().padStart(2, "0")}`;
+}
+
 export default function Timer() {
     // values for counting down
     const [pomodoroTimeLeft, setPomodoroTimeLeft] = useState(workDuration);
@@ -32,7 +41,15 @@ export default function Timer() {
 
         if (isActive) {
             interval = setInterval(() => {
-                setPomodoroTimeLeft((time) => (time > 0 ? time - 1 : 0));
+                setPomodoroTimeLeft((time) => {
+                    if (time > 0) {
+                        return time - 1;
+                    } else {
+                        setIsActive(false);
+                        setIsBreak((i) => !i);
+                        return isBreak ? workDuration : breakDuration;
+                    }
+                });
                 setRemainingTime((time) => (time > 0 ? time - 1 : 0));
             }, 1000);
         } else if (!isActive && pomodoroTimeLeft !== 0) {
@@ -40,10 +57,9 @@ export default function Timer() {
         }
 
         return () => clearInterval(interval);
-    }, [isActive, pomodoroTimeLeft]);
+    }, [isActive, isBreak, pomodoroTimeLeft]);
 
     const handleStart = () => {
-        setIsActive(true);
         setIsActive(!isActive);
     };
 
@@ -53,11 +69,27 @@ export default function Timer() {
                 {description}
             </h1>
             <h3 className={classes.category}>{category}</h3>
-            <p>Remaining time for this task:</p>
-            <h1 className={classes.timer}>{formatTime(remainingTime)}</h1>
-            <p>Remaining time for this set:</p>
-            <h1 className={classes.timer}>{formatTime(pomodoroTimeLeft)}</h1>
-            <button onClick={handleStart}>Play</button>
+            {isBreak ? <p>Break time!</p> : <p>Remaining time for this set:</p>}
+            <h1 className={classes.timer}>
+                {formatPomodoroTime(pomodoroTimeLeft)}
+            </h1>
+            <h2>Remaining time for this task: {formatTime(remainingTime)}</h2>
+            <button className={`blueButton`} onClick={handleStart}>
+                {isActive ? "Pause" : "Play"}
+            </button>
+            <p></p>
+            {!isActive ? (
+                <button
+                    className={`orangeButton`}
+                    onClick={() => {
+                        setIsActive(false);
+                        setIsBreak(true);
+                        setPomodoroTimeLeft(workDuration);
+                    }}
+                >
+                    Completed
+                </button>
+            ) : null}
         </Container>
     );
 }
