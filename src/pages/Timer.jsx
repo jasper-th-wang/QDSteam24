@@ -1,29 +1,34 @@
+import { useState } from "react";
+
 export default function Timer() {
+    const description = "Chapter 1: Introduction to JavaScript";
+    const category = "JavaScript";
+
     const [time, setTime] = useState(0);
     const [goal, setGoal] = useState(0);
-    
+
     const handleTimeChange = (e) => {
         setTime(e.target.value);
     };
-    
+
     const handleGoalChange = (e) => {
         setGoal(e.target.value);
     };
-    
+
     return (
         <div>
-        <h1>Timer</h1>
-        <label>
-            Time:
-            <input type="number" value={time} onChange={handleTimeChange} />
-        </label>
-        <label>
-            Goal:
-            <input type="number" value={goal} onChange={handleGoalChange} />
-        </label>
-        <p>
-            Time: {time} Goal: {goal}
-        </p>
+            <h1>Timer</h1>
+            <label>
+                Time:
+                <input type="number" value={time} onChange={handleTimeChange} />
+            </label>
+            <label>
+                Goal:
+                <input type="number" value={goal} onChange={handleGoalChange} />
+            </label>
+            <p>
+                Time: {time} Goal: {goal}
+            </p>
         </div>
     );
-    }
+}
