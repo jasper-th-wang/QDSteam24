@@ -25,6 +25,7 @@ function TaskCard({ taskName, remainTime }) {
 
                     <button className='blueButton'>Start This Task</button>
                     <br />
+                    <br />
                     <button className='orangeButton'>Completed</button>
                     <p style={deleteTaskStyle}>Delete Task</p>
                 </CardContent>

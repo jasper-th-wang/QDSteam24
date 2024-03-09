@@ -3,7 +3,14 @@ import Container from "../Container/Container";
 
 function TaskList() {
     return (
-        <TaskCard />
+        <Container>
+            <p>Today's tasks</p>
+            <TaskCard />
+            <br />
+            <TaskCard />
+            <br />
+            <TaskCard />
+        </Container>
     )
 }
 
