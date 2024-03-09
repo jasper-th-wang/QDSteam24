@@ -23,9 +23,9 @@ function GetTodaysDate() {
     }
 
     return (
-        <div className={classes.redText}>
-            <h3>{`${month} ${day}, ${year}`}</h3>
-            <p>{greeting}</p>
+        <div>
+            <h3 className="blueTitleColour">{`${month} ${day}, ${year}`}</h3>
+            <p className='orangeColour'>{greeting}</p>
         </div>
     );
 }
@@ -33,8 +33,9 @@ function GetTodaysDate() {
 function SetDailyGoal() {
     return (
 
-        <div className="blueTitleColour">
+        <div className="">
             <GetTodaysDate />
+            <br />
             <p>Let's set a goal for today</p>
             <p>How long do you want to spend time to study today?</p>
             <br />
