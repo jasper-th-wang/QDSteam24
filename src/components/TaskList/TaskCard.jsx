@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 
 import Container from '../Container/Container';
 const deleteTaskStyle = {
-    color: 'gray',
+    color: '#ACACAC',
     fontSize: '0.8em',
     textDecoration: 'underline',
     cursor: 'pointer',  // show hand cursor when hover
