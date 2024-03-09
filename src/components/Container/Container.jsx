@@ -1,9 +1,9 @@
 import Paper from '@mui/material/Paper';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import RestoreIcon from '@mui/icons-material/Restore';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
+import HomeIcon from '@mui/icons-material/Home';
+import FlagIcon from '@mui/icons-material/Flag';
+import PetsIcon from '@mui/icons-material/Pets';
 import { useState } from 'react';
 import classes from './Container.module.css';
 function Container({ children }) {
@@ -24,12 +24,12 @@ function Container({ children }) {
           }}
           sx={{
             bgcolor: '#00D4FF',
-            height: '6rem',
+            height: '5rem',
           }}
         >
-          <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-          <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-          <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
+          <BottomNavigationAction label="Home" icon={<HomeIcon />} />
+          <BottomNavigationAction label="Goals" icon={<FlagIcon />} />
+          <BottomNavigationAction label="Pet" icon={<PetsIcon />} />
         </BottomNavigation>
       </Paper>
     </>
