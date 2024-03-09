@@ -2,6 +2,8 @@ import Button from '@mui/material/Button';
 import React from 'react';
 import classes from './SetDailyGoal.module.css';
 import TodayDate from '../components/TodayDate/TodayDate';
+import Container from '../components/Container/Container';
+import { useState } from 'react';
 
 function Greeting() {
   // Get current Date
