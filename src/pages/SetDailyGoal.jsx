@@ -1,5 +1,5 @@
 import Button from '@mui/material/Button';
-import React from 'react';
+import React, { useState } from 'react';
 import classes from './SetDailyGoal.module.css';
 import TodayDate from '../components/TodayDate/TodayDate';
 
@@ -33,6 +33,21 @@ function Greeting() {
     );
 }
 
+function SetTIme() {
+    const [time, setTime] = useState("00:00");
+
+    const handleTimeChange = (event) => {
+        setTime(event.target.value);
+    };
+
+    return (
+        <div>
+            <input type="time" value={time} onChange={handleTimeChange} />
+        </div>
+    );
+
+}
+
 function SetDailyGoal() {
     return (
 
@@ -41,6 +56,7 @@ function SetDailyGoal() {
             <p>Let's set a goal for today</p>
             <br />
             <p>How long do you want to spend time to study today?</p>
+            <SetTIme />
             <br />
             <Button variant="contained">Set Today's Goal</Button>
         </div>
