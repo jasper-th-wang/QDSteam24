@@ -10,7 +10,7 @@ function Container({ children }) {
   const [value, setValue] = useState(0);
 
   return (
-    <div>
+    <>
       <div className={classes.container}>{children}</div>
       <Paper
         sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
@@ -22,13 +22,17 @@ function Container({ children }) {
           onChange={(event, newValue) => {
             setValue(newValue);
           }}
+          sx={{
+            bgcolor: '#00D4FF',
+            height: '6rem',
+          }}
         >
           <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
           <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
           <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
         </BottomNavigation>
       </Paper>
-    </div>
+    </>
   );
 }
 
