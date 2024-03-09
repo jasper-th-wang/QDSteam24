@@ -1,6 +1,6 @@
 import { useState } from "react";
 import classes from "./Timer.module.css";
-import Container from "../components/Container";
+import Container from "../components/Container/Container";
 
 // values for Pomodoro timer
 const workDuration = 25 * 60;
