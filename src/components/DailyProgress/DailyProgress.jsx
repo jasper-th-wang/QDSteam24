@@ -5,11 +5,9 @@ import TodayDate from '../TodayDate/TodayDate';
 function DailyProgress() {
   return (
     <Container>
-      <Stack>
-        <TodayDate />
-        <LinearProgress color="primary" fourColor variant="determinate" />
-        <p>6 hours remaining</p>
-      </Stack>
+      <TodayDate />
+      <LinearProgress color="primary" fourColor variant="determinate" />
+      <p>6 hours remaining</p>
     </Container>
   );
 }
