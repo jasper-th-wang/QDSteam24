@@ -5,34 +5,10 @@ import '@fontsource/roboto/700.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Home from './pages/Home.jsx';
-import Timer from './pages/Timer.jsx';
-import SetDailyGoal from './pages/SetDailyGoal.jsx';
-import TaskCard from './components/TaskList/TaskCard.jsx';
-import TaskList from './components/TaskList/TaskList.jsx';
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Home />,
-  },
-  {
-    path: '/timer',
-    element: <Timer />,
-  },
-  {
-    path: '/daily-goals',
-    element: <SetDailyGoal />,
-  },
-  {
-    path: '/task-card',
-    element: <TaskList />,
-  }
-]);
+import App from './App';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <App />
   </React.StrictMode>
 );
