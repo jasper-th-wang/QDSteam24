@@ -26,7 +26,7 @@ function Greeting() {
     return (
         <div>
             <TodayDate />
-            <p className='orangeColour'>{greeting}</p>
+            <p className='orangeColour' style={{ fontWeight: 'bolder' }}>{greeting}</p>
         </div>
     );
 }

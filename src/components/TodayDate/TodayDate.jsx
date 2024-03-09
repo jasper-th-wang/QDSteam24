@@ -10,7 +10,7 @@ function TodayDate() {
 
   return (
     <div>
-      <h3 className="blueTitleColour">{`${month} ${day}, ${year}`}</h3>
+      <h3 className="blueTitleColour" style={{ fontWeight: 'bolder' }}>{`${month} ${day}, ${year}`}</h3>
     </div>
   );
 }
