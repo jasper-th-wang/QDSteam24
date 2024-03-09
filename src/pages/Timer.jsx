@@ -1,34 +1,40 @@
 import { useState } from "react";
+import classes from "./Timer.module.css";
+import Container from "../components/Container";
+
+// values for Pomodoro timer
+const workDuration = 25 * 60;
+const breakDuration = 5 * 60;
+
+// things we want to get from firebase
+const description = "Chapter 1: Introduction to JavaScript";
+const category = "JavaScript";
+const originalRemainingTime = 90 * 60; // 90 minutes
+
+// values for counting down
+const [pomodoroTimeLeft, setPomodoroLeftTime] = useState(workDuration);
+const [remainingTime, setRemainingTime] = useState(originalRemainingTime);
+
+function formatTime(seconds) {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const remainingSeconds = seconds % 60;
+    return `${hours.toString().padStart(2, "0")}:${minutes
+        .toString()
+        .padStart(2, "0")}:${remainingSeconds.toString().padStart(2, "0")}`;
+}
 
 export default function Timer() {
-    const description = "Chapter 1: Introduction to JavaScript";
-    const category = "JavaScript";
-
-    const [time, setTime] = useState(0);
-    const [goal, setGoal] = useState(0);
-
-    const handleTimeChange = (e) => {
-        setTime(e.target.value);
-    };
-
-    const handleGoalChange = (e) => {
-        setGoal(e.target.value);
-    };
-
     return (
-        <div>
-            <h1>Timer</h1>
-            <label>
-                Time:
-                <input type="number" value={time} onChange={handleTimeChange} />
-            </label>
-            <label>
-                Goal:
-                <input type="number" value={goal} onChange={handleGoalChange} />
-            </label>
-            <p>
-                Time: {time} Goal: {goal}
-            </p>
-        </div>
+        <Container>
+            <h1 className={`${classes.description} blueTitleColour`}>
+                {description}
+            </h1>
+            <h3 className={classes.category}>{category}</h3>
+            <p>Remaining time for this task:</p>
+            <h1 className={classes.timer}>{formatTime(remainingTime)}</h1>
+            <p>Remaining time for this set:</p>
+            <h1 className={classes.timer}>{formatTime(pomodoroTimeLeft)}</h1>
+        </Container>
     );
 }
