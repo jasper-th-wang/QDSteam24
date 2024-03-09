@@ -33,15 +33,30 @@ function Greeting() {
 }
 
 function SetTIme() {
-    const [time, setTime] = useState("00:00");
+    const [hours, setHours] = useState("00:00");
+    const [minutes, setMinutes] = useState(0);
 
-    const handleTimeChange = (event) => {
-        setTime(event.target.value);
+    const handleHoursChange = (event) => {
+        const newHours = parseInt(event.target.value, 10);
+        setHours(newHours >= 0 ? newHours : 0);
+    };
+
+    const handleMinutesChange = (event) => {
+        const newMinutes = parseInt(event.target.value, 10);
+        setMinutes(newMinutes >= 0 ? newHours : 0);
     };
 
     return (
         <div>
-            <input type="time" value={time} onChange={handleTimeChange} />
+            <label>
+                Hours:
+                <input type="number" value={hours} onChange={handleHoursChange} />
+            </label>
+            <br />
+            <label>
+                Minutes:
+                <input type="number" value={minutes} onChange={handleMinutesChange} />
+            </label>
         </div>
     );
 
@@ -54,7 +69,7 @@ function SetDailyGoal() {
             <Greeting />
             <p>Let's set a goal for today</p>
             <br />
-            <p>How long do you want to spend time to study today?</p>
+            <p>How long do you want to spend <br />time to study today?</p>
             <SetTIme />
             <br />
             <Button variant="contained">Set Today's Goal</Button>
