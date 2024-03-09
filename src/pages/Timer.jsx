@@ -1,4 +1,7 @@
 export default function Timer() {
+    const description = "Chapter 1: Introduction to JavaScript";
+    const category = 'JavaScript';
+
     const [time, setTime] = useState(0);
     const [goal, setGoal] = useState(0);
     
