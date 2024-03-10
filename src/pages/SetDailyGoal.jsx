@@ -1,9 +1,11 @@
 import Button from '@mui/material/Button';
 import React from 'react';
 import classes from './SetDailyGoal.module.css';
+import Stack from '@mui/material/Stack';
 import TodayDate from '../components/TodayDate/TodayDate';
 import Container from '../components/Container/Container';
 import { useState } from 'react';
+import TimePicker from '../components/TimePicker/TimePicker';
 
 function Greeting() {
   // Get current Date
@@ -30,43 +32,66 @@ function Greeting() {
   return (
     <div>
       <TodayDate />
-      <p className="orangeColour" style={{ fontWeight: 'bolder' }}>
+      <div className="orangeColour" style={{ fontWeight: 'bolder' }}>
         {greeting}
-      </p>
+      </div>
     </div>
   );
 }
 
-function SetTIme() {
-  const [hours, setHours] = useState('00:00');
-  const [minutes, setMinutes] = useState(0);
+// function SetTime() {
+//   const [hours, setHours] = useState(0);
+//   const [minutes, setMinutes] = useState(0);
 
-  const handleHoursChange = (event) => {
-    const newHours = parseInt(event.target.value, 10);
-    setHours(newHours >= 0 ? newHours : 0);
-  };
+//   const handleHoursChange = (event) => {
+//     const newHours = parseInt(event.target.value, 10);
+//     setHours(newHours >= 0 ? newHours : 0);
+//   };
 
-  const handleMinutesChange = (event) => {
-    const newMinutes = parseInt(event.target.value, 10);
-    setMinutes(newMinutes >= 0 ? newHours : 0);
-  };
+//   const handleMinutesChange = (event) => {
+//     const newMinutes = parseInt(event.target.value, 10);
+//     setMinutes(newMinutes >= 0 ? newMinutes : 0);
+//   };
 
-  return (
-    <form>
-      <Stack>
-        <label>Hours:</label>
-        <input type="number" value={hours} onChange={handleHoursChange} />
-        <br />
-        <label>Minutes:</label>
-        <input type="number" value={minutes} onChange={handleMinutesChange} />
-        <br />
-        <button className="blueButton">Set Today's Goal</button>
-      </Stack>
-    </form>
-  );
-}
+//   const handleSetGoal = (event) => {
+//     event.preventDefault();
+//     console.log(hours + ':' + minutes);
+//   };
+
+//   return (
+//     <form>
+//       <Stack>
+//         <label>Hours:</label>
+//         <input
+//           type="number"
+//           value={hours}
+//           onChange={handleHoursChange}
+//           min="1"
+//           max="24"
+//           step="1"
+//         />
+//         <label>Minutes:</label>
+//         <input
+//           type="number"
+//           value={minutes}
+//           onChange={handleMinutesChange}
+//           min="0"
+//           max="60"
+//           step="1"
+//         />
+//         <button className="blueButton" onClick={handleSetGoal}>
+//           Set Today's Goal
+//         </button>
+//       </Stack>
+//     </form>
+//   );
+// }
 
 function SetDailyGoal() {
+  const handleGoalSubmit = (event) => {
+    event.preventDefault();
+    console.log('Goal Submitted');
+  };
   return (
     <Container>
       <Greeting />
@@ -76,7 +101,12 @@ function SetDailyGoal() {
         How long do you want to spend <br />
         time to study today?
       </p>
-      <SetTIme />
+      <form>
+        <TimePicker />
+        <button className="blueButton" onClick={handleGoalSubmit}>
+          Set Today's Goal
+        </button>
+      </form>
     </Container>
   );
 }

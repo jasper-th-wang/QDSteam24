@@ -101,3 +101,10 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+[data-input][type="number"]::-webkit-inner-spin-button,
+[data-input][type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
