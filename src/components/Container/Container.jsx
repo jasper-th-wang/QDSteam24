@@ -16,7 +16,7 @@ function Container({ children }) {
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
+        <AppBar position="fixed">
           <img src={logo} alt="" />
         </AppBar>
       </Box>
