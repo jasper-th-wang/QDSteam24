@@ -6,7 +6,7 @@ export default function Congratulations() {
   return (
     <Box>
       <h1 className={classes.congratulations}>Congratulations!</h1>
-      <h2>You completed a task!</h2>
+      <h2>You completed every task!</h2>
       {Pet({ mode: 3 })}
       <p></p>
     </Box>
