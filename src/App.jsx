@@ -37,7 +37,8 @@ const router = createBrowserRouter([
 
 function App() {
   const [goalTime, setGoalTime] = useState(0);
-  const totalTimeValue = { goalTime, setGoalTime };
+  const [timeElapsed, setTimeElapsed] = useState(0);
+  const totalTimeValue = { goalTime, setGoalTime, timeElapsed, setTimeElapsed };
 
   return (
     <>
