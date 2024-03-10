@@ -25,9 +25,9 @@ function Home() {
   }, [goalTime, timeElapsed, tasks]);
   return (
     <Container>
+      {displayCongrats ? <Congratulations /> : null}
       <DailyProgress />
       <TaskList />
-      {displayCongrats ? <Congratulations /> : null}
       <button className="blueButton" onClick={handleAddTaskButton}>
         Add More Tasks
       </button>

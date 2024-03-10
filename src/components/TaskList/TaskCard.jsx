@@ -7,6 +7,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
+import minutesToHoursAndMinutes from '../../helper/minutesToHoursAndMinutes';
 
 const deleteTaskStyle = {
   backgroundColor: 'transparent',
@@ -94,7 +95,7 @@ function TaskCard({ task }) {
       <CardContent>
         <p>{task.category}</p>
         <p>{task.description}</p>
-        <p>{timeRemaining} remaining</p>
+        <p>{minutesToHoursAndMinutes(timeRemaining)} remaining</p>
         <TaskButton task={task} />
       </CardContent>
     </Card>
