@@ -1,9 +1,9 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 
-import Container from '../Container/Container';
 const deleteTaskStyle = {
+  backgroundColor: 'transparent',
   color: '#ACACAC',
   fontSize: '0.8em',
   textDecoration: 'underline',
@@ -19,22 +19,39 @@ function TaskButton() {
         <br />
         <br />
         <button className="orangeButton">Completed</button>
-        <p style={deleteTaskStyle}>Delete Task</p>
+        <br />
+        <button style={deleteTaskStyle}>Delete Task</button>
       </div>
     );
   } else {
     return (
       <div>
         <button className="grayButton">Completed</button>
-        <p style={deleteTaskStyle}>Delete Task</p>
+        <p style={deleteTaskStyle}>Change Task</p>
       </div>
     );
   }
 }
 
 function TaskCard() {
+  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
+
+  const handleDeleteClick = () => {
+    setDeleteModalOpen(true);
+  };
+
+  const handleDeleteConfirm = () => {
+    // Delete task
+    setDeleteModalOpen(false);
+  };
+
+  const handleDeleteCancel = () => {
+    setDeleteModalOpen(false);
+  };
+
   let taskName = 'JavaScript';
   let remainTime = '1 hour 30 minutes';
+
   return (
     <Card sx={{ minWidth: 275, backgroundColor: '#E8FEFF' }}>
       <CardContent>
