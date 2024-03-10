@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import { useNavigate } from 'react-router-dom';
-import DeleteTask from './DeleteTask';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+
 
 const deleteTaskStyle = {
   backgroundColor: 'transparent',
@@ -13,11 +16,19 @@ const deleteTaskStyle = {
 };
 
 function TaskButton() {
-  const navigate = useNavigate();
-  const handleTryDeleteTask = (event) => {
-    event.preventDefault();
-    console.log('User clicks delete task');
-    navigate(<DeleteTask />);
+  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
+
+  const handleDeleteClick = () => {
+    setDeleteModalOpen(true);
+  };
+
+  const handleDeleteCancel = () => {
+    setDeleteModalOpen(false);
+  };
+
+  const handleDeleteConfirm = () => {
+    // Delete task
+    setDeleteModalOpen(false);
   };
 
   let isCompleted = false;
@@ -29,7 +40,22 @@ function TaskButton() {
         <br />
         <button className="orangeButton">Completed</button>
         <br />
-        <button style={deleteTaskStyle} onClick={handleTryDeleteTask}>Delete Task</button>
+        <button style={deleteTaskStyle} onClick={handleDeleteClick}>Delete Task</button>
+        {/* Deleteボタンがクリックされたら表示 */}
+        <Dialog open={isDeleteModalOpen} onClose={handleDeleteCancel}>
+          <DialogTitle>Delete Task</DialogTitle>
+          <DialogContent>
+            <p>Are you sure you want to delete this task?</p>
+          </DialogContent>
+          <DialogActions>
+            <button onClick={handleDeleteConfirm} className='lightBlueButton'>
+              Delete
+            </button>
+            <button onClick={handleDeleteCancel} className="grayButton">
+              Cancel
+            </button>
+          </DialogActions>
+        </Dialog>
       </div>
     );
   } else {
@@ -43,6 +69,7 @@ function TaskButton() {
 }
 
 function TaskCard() {
+
   let taskName = 'JavaScript';
   let remainTime = '1 hour 30 minutes';
 
