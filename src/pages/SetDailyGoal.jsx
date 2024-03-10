@@ -1,10 +1,11 @@
 import { useNavigate } from 'react-router-dom';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import TotalTimeContext from '../store/TotalTimeContext';
 import TodayDate from '../components/TodayDate/TodayDate';
 import Container from '../components/Container/Container';
 import TimePicker from '../components/TimePicker/TimePicker';
 import Pet from '../components/Pet/Pet';
+import { FormHelperText } from '@mui/material';
 
 function Greeting() {
   // Get current Date
@@ -90,9 +91,17 @@ function Greeting() {
 function SetDailyGoal() {
   const [selectedTime, setSelectedTime] = useState(0);
   const { goalTime, handleSetGoalTime } = useContext(TotalTimeContext);
+  const [goalTimeError, setGoalTimeError] = useState(false);
   const navigate = useNavigate();
+  useEffect(() => {
+    setGoalTimeError(false);
+  }, [selectedTime]);
   const handleGoalSubmit = (event) => {
     event.preventDefault();
+    if (selectedTime === 0) {
+      setGoalTimeError(true);
+      return;
+    }
     handleSetGoalTime(selectedTime);
     console.log('Goal Submitted');
     navigate('/');
@@ -108,6 +117,9 @@ function SetDailyGoal() {
         today?
       </p>
       <form>
+        <FormHelperText error={goalTimeError}>
+          {goalTimeError ? 'Please select a time' : ''}
+        </FormHelperText>
         <TimePicker
           selectedTime={selectedTime}
           onSliderChange={handleSliderChange}

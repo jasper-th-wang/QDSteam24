@@ -32,10 +32,10 @@ function Home() {
     navigate('/create-task');
   };
   useEffect(() => {
-    if (goalTime == 0) {
+    if (goalTime === 0 && localStorage.getItem('goalTime') === null) {
       navigate('/daily-goals');
     }
-  }, []);
+  }, [goalTime]);
 
   // Redirect to congrats page when goal time is used up, and tasks are completed
   useEffect(() => {
