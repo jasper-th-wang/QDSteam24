@@ -5,9 +5,11 @@ import Pet from '../Pet/Pet';
 export default function Congratulations() {
     return (
         <Container>
-            <h1>Congratulations!</h1>
-            <p>You completed a task!</p>
-            {Pet({ mode: 1 })}
+            <h1 className={classes.congratulations}>Congratulations!</h1>
+            <h2>You completed a task!</h2>
+            {Pet({ mode: 3 })}
+            <p></p>
+            <button className={`orangeButton`}>Back to Home</button>
         </Container>
     );
 }
