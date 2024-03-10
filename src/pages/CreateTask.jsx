@@ -82,7 +82,6 @@ function CreateTask() {
         </InputLabel>
         <Select
           error={selectedCategoryError}
-          helperText={selectedCategoryError ? 'Please select a category' : ''}
           labelId="task-dropdown-label"
           id="task-dropdown"
           value={selectedCategory}
@@ -105,7 +104,7 @@ function CreateTask() {
       {/* Task details */}
       <TextField
         error={taskDescriptionError}
-        helperText={taskDescriptionError ? 'Please select a category' : ''}
+        helperText={taskDescriptionError ? 'Please enter a description' : ''}
         label="Task Description"
         variant="outlined"
         fullWidth
