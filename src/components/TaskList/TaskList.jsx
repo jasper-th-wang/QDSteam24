@@ -1,10 +1,15 @@
+import TasksContext from '../../store/TasksContext';
+import { useContext } from 'react';
 import TaskCard from './TaskCard';
 import Container from '../Container/Container';
 
 function TaskList() {
+  const { tasks } = useContext(TasksContext);
   return (
     <Container>
-      <h2>Today's tasks</h2>
+      {tasks.map((task, index) => {
+        return <TaskCard key={index} task={task} />;
+      })}
     </Container>
   );
 }

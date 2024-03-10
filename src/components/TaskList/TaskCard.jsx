@@ -69,15 +69,15 @@ function TaskButton() {
   }
 }
 
-function TaskCard({ taskName, remainTime }) {
-  let mockTaskName = 'JavaScript';
-  let mockRemainTime = '1 hour 30 minutes';
-
+function TaskCard({ task }) {
+  const { category, description, timeElapsed, budgetedTimeAmount } = task;
+  const timeRemaining = budgetedTimeAmount - timeElapsed;
   return (
     <Card sx={{ minWidth: 275, backgroundColor: '#E8FEFF' }}>
       <CardContent>
-        <p>{mockTaskName}</p>
-        <p>{mockRemainTime} remaining</p>
+        <p>{category}</p>
+        <p>{description}</p>
+        <p>{timeRemaining} remaining</p>
         <TaskButton />
       </CardContent>
     </Card>
