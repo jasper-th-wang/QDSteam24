@@ -13,9 +13,9 @@ const petModes = {
 function Pet({ mode }) {
   const petImage = petModes[mode];
   if (mode === 3) {
-    return <img src={petImage} alt="pet" width="300px" />;
+    return <img src={petImage} alt="pet" width="200px" />;
   } else {
-      return <img src={petImage} alt="pet" width="100px" />;
+    return <img src={petImage} alt="pet" width="100px" />;
   }
 }
 

@@ -61,7 +61,7 @@ function App() {
     setGoalTime(newGoalTime);
   };
 
-  const handleIncreaseElapsedTime = (time) => {
+  const handleIncreaseTime = (time) => {
     localStorage.setItem('timeElapsed', timeElapsed - time);
     setTimeElapsed(timeElapsed - time);
   };
@@ -69,15 +69,19 @@ function App() {
     localStorage.setItem('timeElapsed', timeElapsed + time);
     setTimeElapsed(timeElapsed + time);
   };
+  const handleCompleteEarly = () => {
+    localStorage.setItem('timeElapsed', goalTime);
+    setTimeElapsed(goalTime);
+  };
 
   const handleAddTask = (taskId, category, description, budgetedTimeAmount) => {
-    const timeElapsed = 0;
     const newTask = {
       taskId,
       category,
       description,
       budgetedTimeAmount,
-      timeElapsed,
+      timeElapsed: 0,
+      completed: false,
     };
     handleDecreaseTime(budgetedTimeAmount);
     localStorage.setItem('tasks', JSON.stringify([...tasks, newTask]));
@@ -94,11 +98,17 @@ function App() {
     localStorage.setItem('tasks', JSON.stringify(newTasks));
     setTasks(newTasks);
     const timeUnused = task.task.budgetedTimeAmount - task.task.timeElapsed;
-    handleIncreaseElapsedTime(timeUnused);
+    handleIncreaseTime(timeUnused);
   };
 
   const handleCompleteTask = (task) => {
-    const newTasks = tasks.filter((t) => t.taskId !== task.task.taskId);
+    task.task.completed = true;
+    const newTasks = tasks.map((t) => {
+      if (t.taskId === task.task.taskId) {
+        return task.task;
+      }
+      return t;
+    });
     localStorage.setItem('tasks', JSON.stringify(newTasks));
     setTasks(newTasks);
   };
@@ -110,6 +120,7 @@ function App() {
     setTimeElapsed,
     tasks,
     handleAddTask,
+    handleCompleteEarly,
   };
   const tasksValue = {
     tasks,

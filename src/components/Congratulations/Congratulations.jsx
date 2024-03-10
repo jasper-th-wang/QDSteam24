@@ -9,7 +9,6 @@ export default function Congratulations() {
       <h2>You completed a task!</h2>
       {Pet({ mode: 3 })}
       <p></p>
-      <button className={`orangeButton`}>Back to Home</button>
     </Box>
   );
 }

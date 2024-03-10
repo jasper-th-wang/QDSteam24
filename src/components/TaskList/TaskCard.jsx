@@ -8,6 +8,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import minutesToHoursAndMinutes from '../../helper/minutesToHoursAndMinutes';
+import { Stack } from '@mui/material';
 
 const deleteTaskStyle = {
   backgroundColor: 'transparent',
@@ -45,22 +46,21 @@ function TaskButton(task) {
     handleCompleteTask(task);
   };
 
-  let isCompleted = false;
-  if (!isCompleted) {
+  // let isCompleted = false;
+  if (!task.task.completed) {
     return (
       <div>
-        <button className="blueButton" onClick={handleStartTask}>
-          Start This Task
-        </button>
-        <br />
-        <br />
-        <button className="orangeButton" onClick={handleCompleteButton}>
-          Completed
-        </button>
-        <br />
-        <button style={deleteTaskStyle} onClick={handleDeleteClick}>
-          Delete Task
-        </button>
+        <Stack spacing={2}>
+          <button className="blueButton" onClick={handleStartTask}>
+            Start This Task
+          </button>
+          <button className="orangeButton" onClick={handleCompleteButton}>
+            Completed
+          </button>
+          <button style={deleteTaskStyle} onClick={handleDeleteClick}>
+            Delete Task
+          </button>
+        </Stack>
         {/* Deleteボタンがクリックされたら表示 */}
         <Dialog open={isDeleteModalOpen} onClose={handleDeleteCancel}>
           <DialogTitle>Delete Task</DialogTitle>
@@ -93,7 +93,7 @@ function TaskCard({ task }) {
   return (
     <Card sx={{ minWidth: 275, backgroundColor: '#E8FEFF' }}>
       <CardContent>
-        <p>{task.category}</p>
+        <p className="cardTitle">{task.category}</p>
         <p>{task.description}</p>
         <p>{minutesToHoursAndMinutes(timeRemaining)} remaining</p>
         <TaskButton task={task} />

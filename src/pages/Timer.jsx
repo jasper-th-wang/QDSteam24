@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import TasksContext from '../store/TasksContext';
+import { useState, useEffect, useContext } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import classes from './Timer.module.css';
 import Container from '../components/Container/Container';
 import { CircularProgressbar } from 'react-circular-progressbar';
@@ -33,8 +34,11 @@ function formatPomodoroTime(seconds) {
 }
 
 export default function Timer() {
+  const { handleCompleteTask } = useContext(TasksContext);
+  const navigate = useNavigate();
   const { state } = useLocation();
   const { task } = state;
+  const urgentBugFixTask = { task: task };
   const { description, category } = task;
   // values for counting down
   const [pomodoroTimeLeft, setPomodoroTimeLeft] = useState(workDuration);
@@ -101,6 +105,8 @@ export default function Timer() {
             setIsActive(false);
             setIsBreak(true);
             setPomodoroTimeLeft(workDuration);
+            handleCompleteTask(urgentBugFixTask);
+            navigate('/');
           }}
         >
           Completed

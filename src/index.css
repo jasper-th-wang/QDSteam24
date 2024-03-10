@@ -22,7 +22,14 @@
 
 .blueTitleColour {
   color: #00D4FF;
+  font-size: 30px;
 }
+
+.timeMessage,
+.cardTitle {
+  font-size: 20px;
+}
+
 
 .orangeColour {
   color: #FFB81E;

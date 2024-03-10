@@ -1,14 +1,14 @@
-import useGetTimeElapsed from "../hooks/useGetTimeElapsed";
-import TasksContext from "../store/TasksContext";
-import { useContext, useState, useId } from "react";
-import { useNavigate } from "react-router-dom";
-import Container from "../components/Container/Container";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
-import InputLabel from "@mui/material/InputLabel";
-import FormControl from "@mui/material/FormControl";
-import TextField from "@mui/material/TextField";
-import TaskTimePicker from "../components/TimePicker/TaskTimePicker";
+import useGetTimeElapsed from '../hooks/useGetTimeElapsed';
+import TasksContext from '../store/TasksContext';
+import { useContext, useState, useId } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Container from '../components/Container/Container';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import InputLabel from '@mui/material/InputLabel';
+import FormControl from '@mui/material/FormControl';
+import TextField from '@mui/material/TextField';
+import TaskTimePicker from '../components/TimePicker/TaskTimePicker';
 
 function CreateTask() {
   const navigate = useNavigate();
@@ -16,8 +16,8 @@ function CreateTask() {
   const { tasks, handleAddTask } = useContext(TasksContext);
   const { timeRemain } = useGetTimeElapsed();
   const [taskTime, setTaskTime] = useState(0);
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [taskDescription, setTaskName] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [taskDescription, setTaskName] = useState('');
 
   const handleSetTaskTime = (newTaskTime) => {
     setTaskTime(newTaskTime);
@@ -34,17 +34,19 @@ function CreateTask() {
     event.preventDefault();
     console.log(selectedCategory, taskDescription, taskTime);
     handleAddTask(taskId, selectedCategory, taskDescription, taskTime);
-    navigate("/");
+    navigate('/');
   };
   return (
     <Container>
-      <h2 className="blueTitleColour" style={{ fontWeight: "bolder" }}>
+      <h2 className="blueTitleColour" style={{ fontWeight: 'bolder' }}>
         Create Task
       </h2>
 
       {/* Choose the category */}
       <FormControl fullWidth>
-        <InputLabel id="task-dropdown-label">Category</InputLabel>
+        <InputLabel id="task-dropdown-label" required={true}>
+          Category
+        </InputLabel>
         <Select
           labelId="task-dropdown-label"
           id="task-dropdown"
