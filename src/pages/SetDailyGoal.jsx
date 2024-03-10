@@ -1,4 +1,6 @@
 import { useNavigate } from 'react-router-dom';
+import { useState, useContext } from 'react';
+import TotalTimeContext from '../store/TotalTimeContext';
 import TodayDate from '../components/TodayDate/TodayDate';
 import Container from '../components/Container/Container';
 import TimePicker from '../components/TimePicker/TimePicker';
@@ -86,11 +88,17 @@ function Greeting() {
 // }
 
 function SetDailyGoal() {
+  const [selectedTime, setSelectedTime] = useState(0);
+  const { goalTime, handleSetGoalTime } = useContext(TotalTimeContext);
   const navigate = useNavigate();
   const handleGoalSubmit = (event) => {
     event.preventDefault();
+    handleSetGoalTime(selectedTime);
     console.log('Goal Submitted');
     navigate('/');
+  };
+  const handleSliderChange = (newValue) => {
+    setSelectedTime(newValue);
   };
   return (
     <Container>
@@ -100,7 +108,10 @@ function SetDailyGoal() {
         today?
       </p>
       <form>
-        <TimePicker />
+        <TimePicker
+          selectedTime={selectedTime}
+          onSliderChange={handleSliderChange}
+        />
         <button className="blueButton" onClick={handleGoalSubmit}>
           Set Today's Goal
         </button>

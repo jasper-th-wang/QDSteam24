@@ -69,7 +69,7 @@ function Home() {
           ) : null}
         </Item>
         <Item>
-          {displayEarlyComplete ? (
+          {displayEarlyComplete && !displayCongrats ? (
             <button className="blueButton" onClick={handleCompleteEarly}>
               I've finished early!
             </button>

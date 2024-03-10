@@ -1,5 +1,3 @@
-import { useEffect, useContext } from 'react';
-import TotalTimeContext from '../../store/TotalTimeContext';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 
@@ -30,15 +28,9 @@ function minutesToHoursAndMinutes(minutes) {
   return resultParts.length > 0 ? resultParts.join(' ') : '0 minutes';
 }
 
-export default function DiscreteSliderSteps() {
-  const { goalTime, handleSetGoalTime } = useContext(TotalTimeContext);
-
-  useEffect(() => {
-    console.log(goalTime);
-  }, [goalTime]);
-
-  const handleGoalMinutesChange = (event, newValue) => {
-    handleSetGoalTime(newValue);
+export default function DiscreteSliderSteps({ selectedTime, onSliderChange }) {
+  const handleSliderChange = (event, newValue) => {
+    onSliderChange(newValue);
   };
 
   return (
@@ -46,15 +38,16 @@ export default function DiscreteSliderSteps() {
       <Slider
         aria-label="Small steps"
         defaultValue={0}
+        value={selectedTime}
         getAriaValueText={valuetext}
         step={30}
         marks
         min={0}
         max={480}
         valueLabelDisplay="auto"
-        onChange={handleGoalMinutesChange}
+        onChange={handleSliderChange}
       />
-      <h2>{minutesToHoursAndMinutes(goalTime)}</h2>
+      <h2>{minutesToHoursAndMinutes(selectedTime)}</h2>
     </Box>
   );
 }
