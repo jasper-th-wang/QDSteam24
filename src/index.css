@@ -78,6 +78,11 @@ button {
   background-color: #acacac;
 }
 
+.lightBlueButton {
+  color: #000000;
+  background-color: #00D4FF;
+}
+
 button:hover {
   border-color: #646cff;
 }
