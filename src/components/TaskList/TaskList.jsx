@@ -1,20 +1,12 @@
-import TaskCard from "./TaskCard";
-import Container from "../Container/Container";
+import TaskCard from './TaskCard';
+import Container from '../Container/Container';
 
 function TaskList() {
-    return (
-        <Container>
-            <p>Today's tasks</p>
-            <TaskCard />
-            <br />
-            <TaskCard />
-            <br />
-            <TaskCard />
-            <br />
-            <br />
-            <br />
-        </Container>
-    )
+  return (
+    <Container>
+      <h2>Today's tasks</h2>
+    </Container>
+  );
 }
 
 export default TaskList;

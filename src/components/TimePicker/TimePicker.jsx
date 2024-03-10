@@ -31,14 +31,14 @@ function minutesToHoursAndMinutes(minutes) {
 }
 
 export default function DiscreteSliderSteps() {
-  const { goalTime, setGoalTime } = useContext(TotalTimeContext);
+  const { goalTime, handleSetGoalTime } = useContext(TotalTimeContext);
 
   useEffect(() => {
     console.log(goalTime);
   }, [goalTime]);
 
   const handleGoalMinutesChange = (event, newValue) => {
-    setGoalTime(newValue);
+    handleSetGoalTime(newValue);
   };
 
   return (

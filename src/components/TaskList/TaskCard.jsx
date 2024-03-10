@@ -6,7 +6,6 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 
-
 const deleteTaskStyle = {
   backgroundColor: 'transparent',
   color: '#ACACAC',
@@ -40,7 +39,9 @@ function TaskButton() {
         <br />
         <button className="orangeButton">Completed</button>
         <br />
-        <button style={deleteTaskStyle} onClick={handleDeleteClick}>Delete Task</button>
+        <button style={deleteTaskStyle} onClick={handleDeleteClick}>
+          Delete Task
+        </button>
         {/* Deleteボタンがクリックされたら表示 */}
         <Dialog open={isDeleteModalOpen} onClose={handleDeleteCancel}>
           <DialogTitle>Delete Task</DialogTitle>
@@ -48,7 +49,7 @@ function TaskButton() {
             <p>Are you sure you want to delete this task?</p>
           </DialogContent>
           <DialogActions>
-            <button onClick={handleDeleteConfirm} className='lightBlueButton'>
+            <button onClick={handleDeleteConfirm} className="lightBlueButton">
               Delete
             </button>
             <button onClick={handleDeleteCancel} className="grayButton">
@@ -68,16 +69,15 @@ function TaskButton() {
   }
 }
 
-function TaskCard() {
-
-  let taskName = 'JavaScript';
-  let remainTime = '1 hour 30 minutes';
+function TaskCard({ taskName, remainTime }) {
+  let mockTaskName = 'JavaScript';
+  let mockRemainTime = '1 hour 30 minutes';
 
   return (
     <Card sx={{ minWidth: 275, backgroundColor: '#E8FEFF' }}>
       <CardContent>
-        <p>{taskName}</p>
-        <p>{remainTime} remaining</p>
+        <p>{mockTaskName}</p>
+        <p>{mockRemainTime} remaining</p>
         <TaskButton />
       </CardContent>
     </Card>
