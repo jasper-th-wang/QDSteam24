@@ -69,11 +69,11 @@ export default function Timer() {
                 {description}
             </h1>
             <h3 className={classes.category}>{category}</h3>
-            {isBreak ? <p>Break time!</p> : <p>Remaining time for this set:</p>}
+            {isBreak ? <h2>Break time!</h2> : <h2>Remaining for set:</h2>}
             <h1 className={classes.timer}>
                 {formatPomodoroTime(pomodoroTimeLeft)}
             </h1>
-            <h2>Remaining time for this task: {formatTime(remainingTime)}</h2>
+            <h2>Remaining for this task: {formatTime(remainingTime)}</h2>
             <button className={`blueButton`} onClick={handleStart}>
                 {isActive ? "Pause" : "Play"}
             </button>
