@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import { useNavigate } from 'react-router-dom';
+import DeleteTask from './DeleteTask';
 
 const deleteTaskStyle = {
   backgroundColor: 'transparent',
@@ -11,6 +13,13 @@ const deleteTaskStyle = {
 };
 
 function TaskButton() {
+  const navigate = useNavigate();
+  const handleTryDeleteTask = (event) => {
+    event.preventDefault();
+    console.log('User clicks delete task');
+    navigate(<DeleteTask />);
+  };
+
   let isCompleted = false;
   if (!isCompleted) {
     return (
@@ -20,7 +29,7 @@ function TaskButton() {
         <br />
         <button className="orangeButton">Completed</button>
         <br />
-        <button style={deleteTaskStyle}>Delete Task</button>
+        <button style={deleteTaskStyle} onClick={handleTryDeleteTask}>Delete Task</button>
       </div>
     );
   } else {
@@ -34,21 +43,6 @@ function TaskButton() {
 }
 
 function TaskCard() {
-  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
-
-  const handleDeleteClick = () => {
-    setDeleteModalOpen(true);
-  };
-
-  const handleDeleteConfirm = () => {
-    // Delete task
-    setDeleteModalOpen(false);
-  };
-
-  const handleDeleteCancel = () => {
-    setDeleteModalOpen(false);
-  };
-
   let taskName = 'JavaScript';
   let remainTime = '1 hour 30 minutes';
 
