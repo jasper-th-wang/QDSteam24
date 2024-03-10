@@ -6,11 +6,20 @@ import FlagIcon from '@mui/icons-material/Flag';
 import PetsIcon from '@mui/icons-material/Pets';
 import { useState } from 'react';
 import classes from './Container.module.css';
+import logo from '../../assets/minutemon_logo.png';
+import { AppBar } from '@mui/material';
+import Box from '@mui/material/Box';
+
 function Container({ children }) {
   const [value, setValue] = useState(0);
 
   return (
     <>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="static">
+          <img src={logo} alt="" />
+        </AppBar>
+      </Box>
       <div className={classes.container}>{children}</div>
       <Paper
         sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
