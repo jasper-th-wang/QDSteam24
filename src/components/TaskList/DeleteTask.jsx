@@ -3,7 +3,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
-import Button from '@mui/material/Button';
+
 
 const DeleteTask = ({ isOpen, onClose, onDelete }) => {
     return (
@@ -13,12 +13,12 @@ const DeleteTask = ({ isOpen, onClose, onDelete }) => {
                 <p>Are you sure you want to delete this task?</p>
             </DialogContent>
             <DialogActions>
-                <Button onClick={onDelete} color="error">
+                <button onClick={onDelete} className='lightBlueButton'>
                     Delete
-                </Button>
-                <Button onClick={onClose} color="primary">
+                </button>
+                <button onClick={onClose} className="grayButton">
                     Cancel
-                </Button>
+                </button>
             </DialogActions>
         </Dialog>
     );
