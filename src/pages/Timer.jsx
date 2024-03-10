@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import classes from "./Timer.module.css";
 import Container from "../components/Container/Container";
+import { CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 // values for Pomodoro timer
 const workDuration = 10;
-const breakDuration = 5 * 60;
+const breakDuration = 5;
 
 // things we want to get from firebase
 const description = "Chapter 1: Introduction to JavaScript";
@@ -46,7 +48,11 @@ export default function Timer() {
                         return time - 1;
                     } else {
                         setIsActive(false);
-                        setIsBreak((i) => !i);
+                        if (isBreak) {
+                            setIsBreak(false);
+                        } else {
+                            setIsBreak(true);
+                        }
                         return isBreak ? workDuration : breakDuration;
                     }
                 });
@@ -69,10 +75,18 @@ export default function Timer() {
                 {description}
             </h1>
             <h3 className={classes.category}>{category}</h3>
-            {isBreak ? <h2>Break time!</h2> : <h2>Remaining for set:</h2>}
-            <h1 className={classes.timer}>
-                {formatPomodoroTime(pomodoroTimeLeft)}
-            </h1>
+                        {isBreak ? <h2>Break time!</h2> : <h2>Remaining for set:</h2>}
+            {isBreak ? (
+                <CircularProgressbar
+                    value={(pomodoroTimeLeft / breakDuration) * 100}
+                    text={`${formatPomodoroTime(pomodoroTimeLeft)}`}
+                />
+            ) : (
+                <CircularProgressbar
+                    value={(pomodoroTimeLeft / workDuration) * 100}
+                    text={`${formatPomodoroTime(pomodoroTimeLeft)}`}
+                />
+            )}
             <h2>Remaining for this task: {formatTime(remainingTime)}</h2>
             <button className={`blueButton`} onClick={handleStart}>
                 {isActive ? "Pause" : "Play"}
