@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import TotalTimeContext from './store/TotalTimeContext.js';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './pages/Home.jsx';
 import Timer from './pages/Timer.jsx';
@@ -35,9 +36,14 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  const [goalTime, setGoalTime] = useState(0);
+  const totalTimeValue = { goalTime, setGoalTime };
+
   return (
     <>
-      <RouterProvider router={router} />
+      <TotalTimeContext.Provider value={totalTimeValue}>
+        <RouterProvider router={router} />
+      </TotalTimeContext.Provider>
     </>
   );
 }

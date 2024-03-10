@@ -1,10 +1,6 @@
-import Button from '@mui/material/Button';
-import React from 'react';
-import classes from './SetDailyGoal.module.css';
-import Stack from '@mui/material/Stack';
+import { useNavigate } from 'react-router-dom';
 import TodayDate from '../components/TodayDate/TodayDate';
 import Container from '../components/Container/Container';
-import { useState } from 'react';
 import TimePicker from '../components/TimePicker/TimePicker';
 import Pet from '../components/Pet/Pet';
 
@@ -90,9 +86,11 @@ function Greeting() {
 // }
 
 function SetDailyGoal() {
+  const navigate = useNavigate();
   const handleGoalSubmit = (event) => {
     event.preventDefault();
     console.log('Goal Submitted');
+    navigate('/');
   };
   return (
     <Container>

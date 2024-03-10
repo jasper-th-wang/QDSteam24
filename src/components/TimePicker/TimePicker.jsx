@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useContext } from 'react';
+import TotalTimeContext from '../../store/TotalTimeContext';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 
@@ -30,13 +31,14 @@ function minutesToHoursAndMinutes(minutes) {
 }
 
 export default function DiscreteSliderSteps() {
-  const [goalMinutes, setGoalMinutes] = useState(0);
+  const { goalTime, setGoalTime } = useContext(TotalTimeContext);
+
   useEffect(() => {
-    console.log(goalMinutes);
-  }, [goalMinutes]);
+    console.log(goalTime);
+  }, [goalTime]);
 
   const handleGoalMinutesChange = (event, newValue) => {
-    setGoalMinutes(newValue);
+    setGoalTime(newValue);
   };
 
   return (
@@ -52,7 +54,7 @@ export default function DiscreteSliderSteps() {
         valueLabelDisplay="auto"
         onChange={handleGoalMinutesChange}
       />
-      <h2>{minutesToHoursAndMinutes(goalMinutes)}</h2>
+      <h2>{minutesToHoursAndMinutes(goalTime)}</h2>
     </Box>
   );
 }
