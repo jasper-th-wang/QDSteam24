@@ -30,8 +30,7 @@ const router = createBrowserRouter([
   {
     path: '/create-task',
     element: <CreateTask />,
-  }
-
+  },
 ]);
 
 function App() {
