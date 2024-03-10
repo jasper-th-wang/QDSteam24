@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 
@@ -26,7 +26,7 @@ function TaskButton() {
     return (
       <div>
         <button className="grayButton">Completed</button>
-        <p style={deleteTaskStyle}>Delete Task</p>
+        <p style={deleteTaskStyle}>Change Task</p>
       </div>
     );
   }

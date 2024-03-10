@@ -12,10 +12,7 @@ function Home() {
       <Pet mode={1} />
       <TaskList />
       <button className='blueButton'>Add More Tasks</button>
-      <br />
-      <br />
-      <br />
-      <br />
+
     </Container>
   );
 }
