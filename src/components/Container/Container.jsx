@@ -4,15 +4,15 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import HomeIcon from '@mui/icons-material/Home';
 import FlagIcon from '@mui/icons-material/Flag';
 import PetsIcon from '@mui/icons-material/Pets';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import classes from './Container.module.css';
 import logo from '../../assets/minutemon_logo.png';
 import { AppBar } from '@mui/material';
 import Box from '@mui/material/Box';
+import { Link } from 'react-router-dom';
 
 function Container({ children }) {
   const [value, setValue] = useState(0);
-
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -36,7 +36,12 @@ function Container({ children }) {
             height: '5rem',
           }}
         >
-          <BottomNavigationAction label="Home" icon={<HomeIcon />} />
+          <BottomNavigationAction
+            component={Link}
+            to="/"
+            label="Home"
+            icon={<HomeIcon />}
+          />
           <BottomNavigationAction label="Goals" icon={<FlagIcon />} />
           <BottomNavigationAction label="Pet" icon={<PetsIcon />} />
         </BottomNavigation>
