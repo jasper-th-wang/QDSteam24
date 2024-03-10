@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import TasksContext from '../../store/TasksContext';
+import { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Dialog from '@mui/material/Dialog';
@@ -14,8 +16,15 @@ const deleteTaskStyle = {
   cursor: 'pointer', // show hand cursor when hover
 };
 
-function TaskButton() {
+function TaskButton(task) {
+  const { handleDeleteTask, handleCompleteTask } = useContext(TasksContext);
+  const navigate = useNavigate();
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
+
+  const handleStartTask = (event) => {
+    event.preventDefault();
+    navigate('/timer', { state: task });
+  };
 
   const handleDeleteClick = () => {
     setDeleteModalOpen(true);
@@ -27,17 +36,26 @@ function TaskButton() {
 
   const handleDeleteConfirm = () => {
     // Delete task
+    handleDeleteTask(task);
     setDeleteModalOpen(false);
+  };
+
+  const handleCompleteButton = () => {
+    handleCompleteTask(task);
   };
 
   let isCompleted = false;
   if (!isCompleted) {
     return (
       <div>
-        <button className="blueButton">Start This Task</button>
+        <button className="blueButton" onClick={handleStartTask}>
+          Start This Task
+        </button>
         <br />
         <br />
-        <button className="orangeButton">Completed</button>
+        <button className="orangeButton" onClick={handleCompleteButton}>
+          Completed
+        </button>
         <br />
         <button style={deleteTaskStyle} onClick={handleDeleteClick}>
           Delete Task
@@ -70,15 +88,14 @@ function TaskButton() {
 }
 
 function TaskCard({ task }) {
-  const { category, description, timeElapsed, budgetedTimeAmount } = task;
-  const timeRemaining = budgetedTimeAmount - timeElapsed;
+  const timeRemaining = task.budgetedTimeAmount - task.timeElapsed;
   return (
     <Card sx={{ minWidth: 275, backgroundColor: '#E8FEFF' }}>
       <CardContent>
-        <p>{category}</p>
-        <p>{description}</p>
+        <p>{task.category}</p>
+        <p>{task.description}</p>
         <p>{timeRemaining} remaining</p>
-        <TaskButton />
+        <TaskButton task={task} />
       </CardContent>
     </Card>
   );

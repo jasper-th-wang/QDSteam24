@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import TotalTimeContext from './store/TotalTimeContext.js';
 import TasksContext from './store/TasksContext.js';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -8,7 +8,6 @@ import SetDailyGoal from './pages/SetDailyGoal.jsx';
 import TaskList from './components/TaskList/TaskList.jsx';
 import CreateTask from './pages/CreateTask.jsx';
 import Congratulations from './components/Congratulations/Congratulations.jsx';
-import { Task } from '@mui/icons-material';
 
 const router = createBrowserRouter([
   {
@@ -62,15 +61,19 @@ function App() {
     setGoalTime(newGoalTime);
   };
 
+  const handleIncreaseElapsedTime = (time) => {
+    localStorage.setItem('timeElapsed', timeElapsed - time);
+    setTimeElapsed(timeElapsed - time);
+  };
   const handleDecreaseTime = (time) => {
     localStorage.setItem('timeElapsed', timeElapsed + time);
     setTimeElapsed(timeElapsed + time);
   };
 
-  const handleAddTask = (id, category, description, budgetedTimeAmount) => {
+  const handleAddTask = (taskId, category, description, budgetedTimeAmount) => {
     const timeElapsed = 0;
     const newTask = {
-      id,
+      taskId,
       category,
       description,
       budgetedTimeAmount,
@@ -80,6 +83,26 @@ function App() {
     localStorage.setItem('tasks', JSON.stringify([...tasks, newTask]));
     setTasks([...tasks, newTask]);
   };
+
+  const handleDeleteTask = (task) => {
+    // not sure why i have to use task.task....
+    const newTasks = tasks.filter((t) => t.taskId !== task.task.taskId);
+    console.log(tasks);
+    console.log(newTasks);
+    console.log(task);
+    console.log(task.task.taskId);
+    localStorage.setItem('tasks', JSON.stringify(newTasks));
+    setTasks(newTasks);
+    const timeUnused = task.task.budgetedTimeAmount - task.task.timeElapsed;
+    handleIncreaseElapsedTime(timeUnused);
+  };
+
+  const handleCompleteTask = (task) => {
+    const newTasks = tasks.filter((t) => t.taskId !== task.task.taskId);
+    localStorage.setItem('tasks', JSON.stringify(newTasks));
+    setTasks(newTasks);
+  };
+
   const totalTimeValue = {
     goalTime,
     handleSetGoalTime,
@@ -91,6 +114,8 @@ function App() {
   const tasksValue = {
     tasks,
     handleAddTask,
+    handleDeleteTask,
+    handleCompleteTask,
   };
 
   return (
