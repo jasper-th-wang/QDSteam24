@@ -6,6 +6,7 @@ import TodayDate from '../components/TodayDate/TodayDate';
 import Container from '../components/Container/Container';
 import { useState } from 'react';
 import TimePicker from '../components/TimePicker/TimePicker';
+import Pet from '../components/Pet/Pet';
 
 function Greeting() {
   // Get current Date
@@ -32,6 +33,7 @@ function Greeting() {
   return (
     <div>
       <TodayDate />
+      <Pet mode={1} />
       <div className="orangeColour" style={{ fontWeight: 'bolder' }}>
         {greeting}
       </div>
@@ -95,11 +97,9 @@ function SetDailyGoal() {
   return (
     <Container>
       <Greeting />
-      <p>Let's set a goal for today</p>
-      <br />
       <p>
-        How long do you want to spend <br />
-        time to study today?
+        Let's set a goal for today! How long do you want to spend time to study
+        today?
       </p>
       <form>
         <TimePicker />
